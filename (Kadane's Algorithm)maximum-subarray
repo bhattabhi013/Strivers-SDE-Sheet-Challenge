@@ -1,0 +1,18 @@
+ int maxSubArray(vector<int>& nums) {
+      int sum = 0, ans=INT_MIN, i, startpos = 0, endpos=0, tempStart =0 ;
+        for(i=0; i<nums.size(); i++){
+            sum += nums[i];
+            if(ans<sum){
+                 ans =sum;
+                startpos = tempStart;
+                endpos = i;       
+            }
+            if(sum < 0 ){
+                sum = 0;
+                tempStart = i+1;
+            } 
+           
+        }
+        cout << "start pos is " << startpos << " end pos is " <<  endpos <<endl;
+        return ans;
+    }
