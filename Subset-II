@@ -1,0 +1,29 @@
+class Solution {
+public:
+
+    void solve(int index, vector<int> &nums, set<vector<int>> &st, vector<int> &curr){
+        if(index >= nums.size()){
+            st.insert(curr);
+            return;
+        }
+
+        solve(index+1, nums, st, curr);
+        curr.push_back(nums[index]);
+        solve(index+1, nums, st, curr);
+        curr.pop_back();
+
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+       vector<vector<int>> ans;
+        set<vector<int>> st;
+        int i = 0;
+        vector<int> curr;
+        solve(i, nums, st, curr);
+
+        for(auto &i: st){
+            ans.push_back(i);
+        }
+        return ans;
+    }
+};
