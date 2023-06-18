@@ -1,0 +1,15 @@
+  void solve(vector<int> arr, int N, int sum,  vector<int> &ans){
+        if(N<0){
+            ans.push_back(sum);
+            return;
+        }
+        
+        solve(arr, N-1, sum, ans);
+        solve(arr, N-1, sum+arr[N], ans);
+    }
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+         vector<int> ans;
+        solve(arr, N-1, 0, ans);
+       return ans;
+    }
